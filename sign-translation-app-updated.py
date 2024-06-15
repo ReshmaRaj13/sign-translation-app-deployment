@@ -1,7 +1,6 @@
 import streamlit as st
 import pickle
 import numpy as np
-import matplotlib.pyplot as plt
 import mediapipe as mp
 import cv2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
@@ -34,7 +33,6 @@ class signdetection(VideoTransformerBase):
         data_aux = []
         # frame = cv2.imread(input)
         frame_rgb = cv2.cvtColor(frame_input, cv2.COLOR_BGR2RGB)
-        plt.imshow(frame_rgb)
         results = hands.process(frame_rgb)
         with self.frame_lock:
             if results.multi_hand_landmarks:
